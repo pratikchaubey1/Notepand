@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function Card({ task, settask }) {
   const handleDelete = (id) => {
@@ -7,31 +7,36 @@ function Card({ task, settask }) {
   };
 
   return (
-    <div className="w-80 max-w-full bg-white min-h-screen rounded-3xl shadow-xl p-8 flex flex-col justify-center items-center relative hover:scale-105 hover:shadow-2xl transform transition duration-300 ease-in-out">
-      <div className="flex flex-wrap justify-center gap-8">
+    <div className="min-h-screen w-full bg-gradient-to-br from-purple-50 via-white to-pink-50 flex justify-center items-center py-10 px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
         {task.length > 0 ? (
           task.map((taskData) => (
             <div
               key={taskData.id}
-              className="w-72 bg-white rounded-2xl shadow-xl p-6 relative hover:scale-105 transition duration-300"
+              className="relative bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl hover:scale-105 transition-transform duration-300 ease-in-out border border-gray-100"
             >
-              <h1 className="text-center text-2xl font-extrabold text-red-700 mb-3 tracking-wide">
-                Note
+              {/* Heading */}
+              <h1 className="text-center text-xl font-bold text-purple-600 mb-3 tracking-wide">
+                📌 Note
               </h1>
-              <p className="text-lg text-gray-700 font-medium leading-relaxed break-words">
+
+              {/* Note Text */}
+              <p className="text-base text-gray-700 font-medium leading-relaxed break-words">
                 {taskData.Write}
               </p>
 
+              {/* Delete Button */}
               <button
                 onClick={() => handleDelete(taskData.id)}
-                className="absolute top-2 right-2 text-sm text-red-500 hover:text-red-700 font-semibold transition"
+                className="absolute top-3 right-3 text-red-500 hover:text-red-700 transition text-lg"
+                title="Delete Note"
               >
                 ✖
               </button>
             </div>
           ))
         ) : (
-          <p className="text-black text-3xl font-semibold text-center mt-20 animate-pulse">
+          <p className="col-span-full text-gray-600 text-2xl font-semibold text-center mt-20 animate-pulse">
             📝 No Notes Available
           </p>
         )}
